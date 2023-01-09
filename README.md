@@ -13,3 +13,12 @@ Voor bepaalde dingen in de API moet je machteging hebben, omdat we niet willen d
 Maar deze wekrt jammergenoeg niet. 
 Post token 
 ![afbeelding](https://user-images.githubusercontent.com/91123119/211389184-1c9d443f-9088-4ffe-81d2-53d26cb5945b.png)
+![afbeelding](https://user-images.githubusercontent.com/91123119/211389321-71ea0c08-f3e0-4049-83fe-2f005de0c552.png)
+Zoals u ziet geeft dit een error. Maar de bedoeling is dat het een OAuth2 token terug geeft. Deze token zou gebruikt worden op de achtergrond om te controleren of de uitgevoerde actie van een grbuiker mag uitgevoerd worden of niet.
+Post  create user
+![afbeelding](https://user-images.githubusercontent.com/91123119/211389683-dbe80ef8-93bc-4c9d-ba5c-f47811bc5edb.png)
+![afbeelding](https://user-images.githubusercontent.com/91123119/211389721-59d2d4f7-d147-4363-8c96-338a1b157610.png)
+Via deze post kan er een nieuwe gebruik aangemaakt worden. De gebruiker moet een email addres en een paswoord opgeven. De API zal de user van een ID voorzien in de database.
+Get alle users
+![afbeelding](https://user-images.githubusercontent.com/91123119/211390048-2d450126-bff9-4741-ba55-d89f4098c7ca.png)
+Via deze functie kunnen alle gebruikers in de database worden opgevraagd.
