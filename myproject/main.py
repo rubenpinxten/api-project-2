@@ -71,12 +71,12 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
 
 
 @app.post("/users/{user_id}/products/", response_model=schemas.Product)
-def create_products_for_user(user_id: int, product: schemas.ProductCreate, db: Session = Depends(get_db)):
+def create_products_user(user_id: int, product: schemas.ProductCreate, db: Session = Depends(get_db)):
     return crud.create_products_for_user(db=db, product=product, user_id=user_id)
 
 
 @app.post("/products/{product_id}/manufactors/", response_model=schemas.Manufactor)
-def create_manufactors_for_products(product_id: int, manufactor: schemas.ManufactorCreate, db: Session = Depends(get_db)):
+def create_manufactors_products(product_id: int, manufactor: schemas.ManufactorCreate, db: Session = Depends(get_db)):
     return crud.create_manufactors_for_products(db=db, manufactor=manufactor, product_id=product_id)
 
 
@@ -91,10 +91,12 @@ def read_manufactors(skip: int = 0, limit: int = 100, db: Session= Depends(get_d
     manufactors = crud.get_manufactors(db, skip=skip, limit=limit)
     return manufactors
 
-@app.put("/update")
-def update():
+@app.put("/update/manufactor/last", response_model=list[schemas.Manufactor])
+async def update():
+    crud.update_manufactors_last()
     return ("DB has been updated")
 
-#@app.delete("/delete/manufactors")
-#def delete():
- #   return ("has been deleted")
+@app.delete("/delete/manufactors", response_model=list[schemas.Manufactor])
+async def delete():
+    crud.delete_all_manufactors()
+    return ("All manufactors have been deleted")
