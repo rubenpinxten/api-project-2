@@ -33,14 +33,14 @@ def create_products_for_user(db: Session, prodcut: schemas.ProductCreate, users_
     db.add(db_product)
     db.commit()
     db.refresh(db_product)
-    return 
+    return db_product
 
 def create_manufactors_for_products(db: Session, manufactor: schemas.ManufactorCreate, products_id: int):
     db_manufactor = models.Manufactor(**manufactor.dict(), product_id=products_id)
     db.add(db_manufactor)
     db.commit()
     db.refresh(db_manufactor)
-    return 
+    return db_manufactor
 
 def get_products(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Product).offset(skip).limit(limit).all()
