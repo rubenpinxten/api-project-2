@@ -72,7 +72,7 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
 
 @app.post("/users/{user_id}/products/", response_model=schemas.Product)
 def create_products_for_user(user_id: int, product: schemas.ProductCreate, db: Session = Depends(get_db)):
-    return crud.create_user_product(db=db, product=product, user_id=user_id)
+    return crud.create_products_for_user(db=db, product=product, user_id=user_id)
 
 
 @app.post("/products/{product_id}/manufactors/", response_model=schemas.Manufactor)
