@@ -1,5 +1,5 @@
-#from fastapi.security import OAuth2PasswordBearer
-#from fastapi import Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer
+from fastapi import Depends, HTTPException, status
 from datetime import datetime, timedelta
 
 import crud
@@ -46,7 +46,7 @@ def authenticate_user(db: Session, username: str, password: str):
     return user
 
 
-#def get_current_user(db: Session, token: str = Depends(oauth2_scheme)):
+def get_current_user(db: Session, token: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -65,7 +65,7 @@ def authenticate_user(db: Session, username: str, password: str):
     return user
 
 
-#def get_current_active_user(db: Session, token: str = Depends(oauth2_scheme)):
+def get_current_active_user(db: Session, token: str = Depends(oauth2_scheme)):
     current_user = get_current_user(db, token)
     if not current_user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
