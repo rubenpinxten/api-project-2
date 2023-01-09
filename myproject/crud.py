@@ -25,9 +25,9 @@ def create_user(db: Session, user: schemas.UserCreate):
     return db_user
 
 
-def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
-    db_item = models.Item(**item.dict(), owner_id=user_id)
-    db.add(db_item)
+def create_user_prodyct(db: Session, prodcut: schemas.ProductCreate, user_id: int):
+    db_product = models.Product(**prodcut.dict(), owner_id=user_id)
+    db.add(db_product)
     db.commit()
-    db.refresh(db_item)
+    db.refresh(db_product)
     return 
