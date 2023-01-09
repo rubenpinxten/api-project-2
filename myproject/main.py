@@ -95,6 +95,6 @@ def read_manufactors(skip: int = 0, limit: int = 100, db: Session= Depends(get_d
 def update():
     return ("DB has been updated")
 
-@app.delete("/delete")
-def delete():
-    return ("has been deleted")
+#@app.delete("/delete/manufactors")
+#def delete():
+ #   return ("has been deleted")
