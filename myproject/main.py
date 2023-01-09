@@ -76,12 +76,12 @@ def create_products_for_user(user_id: int, product: schemas.ProductCreate, db: S
 
 
 @app.post("/products/{product_id}/manufactors/", response_model=schemas.Manufactor)
-def create_manufactors_for_products(user_id: int, manufactor: schemas.ManufactorCreate, db: Session = Depends(get_db)):
+def create_manufactors_for_products(product_id: int, manufactor: schemas.ManufactorCreate, db: Session = Depends(get_db)):
     return crud.create_manufactors_for_products(db=db, manufactor=manufactor, product_id=product_id)
 
 
 @app.get("/Products/", response_model=list[schemas.Product])
-def read_Products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
+def read_Products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     products = crud.get_products(db, skip=skip, limit=limit)
     return products
 
