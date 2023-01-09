@@ -70,17 +70,26 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
     return db_user
 
 
-@app.post("/users/{user_id}/items/", response_model=schemas.Product)
-def create_item_for_user(
-    user_id: int, product: schemas.ProductCreate, db: Session = Depends(get_db)
-):
-    return crud.create_user_item(db=db, product=product, user_id=user_id)
+@app.post("/users/{user_id}/products/", response_model=schemas.Product)
+def create_products_for_user(user_id: int, product: schemas.ProductCreate, db: Session = Depends(get_db)):
+    return crud.create_user_product(db=db, product=product, user_id=user_id)
 
 
-@app.get("/items/", response_model=list[schemas.Product])
-def read_items(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
-    items = crud.get_items(db, skip=skip, limit=limit)
-    return items
+@app.post("/products/{product_id}/manufactors/", response_model=schemas.Manufactor)
+def create_manufactors_for_products(user_id: int, manufactor: schemas.ManufactorCreate, db: Session = Depends(get_db)):
+    return crud.create_manufactors_for_products(db=db, manufactor=manufactor, product_id=product_id)
+
+
+@app.get("/Products/", response_model=list[schemas.Product])
+def read_Products(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
+    products = crud.get_products(db, skip=skip, limit=limit)
+    return products
+
+
+@app.get("/manufactors/", response_model=list[schemas.Manufactor])
+def read_manufactors(skip: int = 0, limit: int = 100, db: Session= Depends(get_db)):
+    manufactors = crud.get_manufactors(db, skip=skip, limit=limit)
+    return manufactors
 
 @app.put("/update")
 def update():
