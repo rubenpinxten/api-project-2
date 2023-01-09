@@ -113,3 +113,8 @@ Hier geef ik een korte demonstratie van de verschillende endpoints via postman.
 
 ## delete manufactors
 ![afbeelding](https://user-images.githubusercontent.com/91123119/211407311-886f89f7-4aab-439c-bd60-53366a101bc0.png)
+
+# links 
+---
+Front-end link: [https://silly-tanuki-b187c7.netlify.app/]
+Hosted API link: https://system-service-rubenpinxten.cloud.okteto.net/docs
