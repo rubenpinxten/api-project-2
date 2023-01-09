@@ -28,14 +28,14 @@ def create_user(db: Session, user: schemas.UserCreate):
     return db_user
 
 
-def create_user_prodct(db: Session, prodcut: schemas.ProductCreate, users_id: int):
+def create_products_for_user(db: Session, prodcut: schemas.ProductCreate, users_id: int):
     db_product = models.Product(**prodcut.dict(), owner_id=users_id)
     db.add(db_product)
     db.commit()
     db.refresh(db_product)
     return 
 
-def create_product_manufactor(db: Session, manufactor: schemas.ManufactorCreate, products_id: int):
+def create_manufactors_for_products(db: Session, manufactor: schemas.ManufactorCreate, products_id: int):
     db_manufactor = models.Manufactor(**manufactor.dict(), product_id=products_id)
     db.add(db_manufactor)
     db.commit()
