@@ -1,3 +1,4 @@
+from fastapi import Depends, FastAPI
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 
