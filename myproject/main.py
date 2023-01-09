@@ -57,8 +57,8 @@ def read_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db),to
     users = crud.get_users(db, skip=skip, limit=limit)
     return users
 
-@app.get("/users/me", response_model=schemas.User)
-def read_users_me(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
+#@app.get("/users/me", response_model=schemas.User)
+#def read_users_me(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     current_user = auth.get_current_active_user(db, token)
     return current_user
 
