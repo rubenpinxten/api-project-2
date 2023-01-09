@@ -3,8 +3,4 @@ pydantic>=1.8.0,<2.0.0
 uvicorn>=0.15.0,<0.16.0
 sqlalchemy==1.4.42
 
-flask
-python-dotenv
-python-jose
-flask-cors
-six
+python-multipart
